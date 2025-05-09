@@ -1,0 +1,165 @@
+[2025-05-09T16:23:37.378Z] Failed to create student: PrismaClientValidationError: 
+Invalid `prisma.user.create()` invocation:
+
+{
+  data: {
+    names: "Jean Bosco",
+    email: "jean.bosco@example.com",
+    telephone: "+250788123456",
+    password: "$2b$10$2efQbquOlDMepO/aWqmvQeCfwUj5Ag0TpiCZCZuFxPh/oz5DhxEBK",
+    gender: "MALE",
+    role: "STUDENT",
+    student: {
+      create: {
+        level: 6,
+               ~
+        major: "Computer Science",
+        score: undefined
+      }
+    }
+  },
+  include: {
+    student: true
+  }
+}
+
+Argument `level`: Invalid value provided. Expected Level or Null, provided Int.
+[2025-05-09T16:38:29.703Z] Failed to create student: PrismaClientKnownRequestError: 
+Invalid `prisma.user.create()` invocation:
+
+
+Unique constraint failed on the fields: (`email`)
+[2025-05-09T16:45:21.081Z] Failed to create student: PrismaClientKnownRequestError: 
+Invalid `prisma.user.create()` invocation:
+
+
+Unique constraint failed on the fields: (`email`)
+[2025-05-09T16:45:23.562Z] Failed to create student: PrismaClientKnownRequestError: 
+Invalid `prisma.user.create()` invocation:
+
+
+Unique constraint failed on the fields: (`email`)
+[2025-05-09T16:45:40.927Z] Failed to create student: PrismaClientKnownRequestError: 
+Invalid `prisma.user.create()` invocation:
+
+
+Unique constraint failed on the fields: (`email`)
+[2025-05-09T16:46:01.400Z] Failed to create student: PrismaClientKnownRequestError: 
+Invalid `prisma.user.create()` invocation:
+
+
+Unique constraint failed on the fields: (`telephone`)
+[2025-05-09T16:46:07.528Z] Student created: 6ef51f9a-946c-4329-a3b8-e3d050007b99 (jean.bosco4325@example.com)
+[2025-05-09T16:49:54.892Z] Failed to create student: PrismaClientKnownRequestError: 
+Invalid `prisma.user.create()` invocation:
+
+
+Unique constraint failed on the fields: (`email`)
+[2025-05-09T16:56:23.336Z] Failed to create student: PrismaClientKnownRequestError: 
+Invalid `prisma.user.create()` invocation:
+
+
+Unique constraint failed on the fields: (`email`)
+[2025-05-09T16:58:00.037Z] Failed to create student: PrismaClientKnownRequestError: 
+Invalid `prisma.user.create()` invocation:
+
+
+Unique constraint failed on the fields: (`email`)
+[2025-05-09T16:58:07.694Z] Failed to create student: PrismaClientKnownRequestError: 
+Invalid `prisma.user.create()` invocation:
+
+
+Unique constraint failed on the fields: (`email`)
+[2025-05-09T16:59:28.350Z] Failed to create student: PrismaClientKnownRequestError: 
+Invalid `prisma.user.create()` invocation:
+
+
+Unique constraint failed on the fields: (`email`)
+[2025-05-09T17:04:07.233Z] Failed to create student: PrismaClientKnownRequestError: 
+Invalid `prisma.user.create()` invocation:
+
+
+Unique constraint failed on the fields: (`email`)
+[2025-05-09T17:11:41.380Z] Failed to create student: PrismaClientKnownRequestError: 
+Invalid `prisma.user.create()` invocation:
+
+
+Unique constraint failed on the fields: (`email`)
+[2025-05-09T17:13:42.419Z] Failed to create sdfa student: PrismaClientKnownRequestError: 
+Invalid `prisma.user.create()` invocation:
+
+
+Unique constraint failed on the fields: (`email`)
+[2025-05-09T17:14:35.736Z] Failed to create student: PrismaClientKnownRequestError: 
+Invalid `prisma.user.create()` invocation:
+
+
+Unique constraint failed on the fields: (`email`)
+[2025-05-09T17:14:57.512Z] Failed to create student: PrismaClientKnownRequestError: 
+Invalid `prisma.user.create()` invocation:
+
+
+Unique constraint failed on the fields: (`email`)
+[2025-05-09T17:15:54.055Z] Failed to create student: PrismaClientKnownRequestError: 
+Invalid `prisma.user.create()` invocation:
+
+
+Unique constraint failed on the fields: (`email`)
+[2025-05-09T17:17:08.010Z] Fetched all students (no pagination)
+[2025-05-09T17:18:29.909Z] Student not found with ID: 19b7968f-d524-487d-9f60-9a523c9a1f1e 
+[2025-05-09T17:18:44.095Z] Student not found with ID: 6511aa61-b269-4117-b3cd-03bffcd4914a
+[2025-05-09T17:18:55.860Z] Fetched student ID: 28268f52-2798-4139-a398-0c765eb6f7fb
+[2025-05-09T17:19:22.374Z] Deleted student ID: 28268f52-2798-4139-a398-0c765eb6f7fb
+[2025-05-09T17:23:07.897Z] Failed to update student ID 383107cd-78bc-4fbb-a45b-2099d175913c : PrismaClientKnownRequestError: 
+Invalid `prisma.student.update()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+[2025-05-09T17:24:58.508Z] Failed to update student ID 383107cd-78bc-4fbb-a45b-2099d175913c : PrismaClientKnownRequestError: 
+Invalid `prisma.student.update()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+[2025-05-09T17:26:29.778Z] Failed to update student ID 383107cd-78bc-4fbb-a45b-2099d175913c : PrismaClientKnownRequestError: 
+Invalid `prisma.student.update()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+[2025-05-09T17:26:31.847Z] Failed to update student ID 383107cd-78bc-4fbb-a45b-2099d175913c : PrismaClientKnownRequestError: 
+Invalid `prisma.student.update()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+[2025-05-09T17:27:51.176Z] Student not found with ID: 383107cd-78bc-4fbb-a45b-2099d175913c 
+[2025-05-09T17:28:40.727Z] Student not found with ID: 383107cd-78bc-4fbb-a45b-2099d175913c 
+[2025-05-09T17:28:47.538Z] Failed to delete student ID 28268f52-2798-4139-a398-0c765eb6f7fb: PrismaClientKnownRequestError: 
+Invalid `prisma.student.delete()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+[2025-05-09T18:52:44.162Z] Failed to create student: PrismaClientKnownRequestError: 
+Invalid `prisma.user.create()` invocation:
+
+
+Unique constraint failed on the fields: (`email`)
+[2025-05-09T19:05:44.723Z] Failed to create student: PrismaClientKnownRequestError: 
+Invalid `prisma.user.create()` invocation:
+
+
+Unique constraint failed on the fields: (`email`)
+[2025-05-09T19:06:43.927Z] Failed to create student: PrismaClientKnownRequestError: 
+Invalid `prisma.user.create()` invocation:
+
+
+Unique constraint failed on the fields: (`telephone`)
+[2025-05-09T19:17:14.589Z] Failed to create student: PrismaClientKnownRequestError: 
+Invalid `prisma.user.create()` invocation:
+
+
+Unique constraint failed on the fields: (`telephone`)
+[2025-05-09T19:19:58.127Z] Failed to create student: PrismaClientKnownRequestError: 
+Invalid `prisma.user.create()` invocation:
+
+
+Unique constraint failed on the fields: (`telephone`)
+[2025-05-09T19:20:03.330Z] Student created: 2648f633-391d-413e-910a-29ccfa021169 (jean.bosco435@example.com)

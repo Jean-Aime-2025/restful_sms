@@ -1,0 +1,79 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                    String                @id @default(uuid())
+  names                 String
+  email                 String                @unique
+  telephone             String?               @unique
+  password              String
+  gender                Gender?                 
+  profilePicture        String                @default("https://firebasestorage.googleapis.com/v0/b/relaxia-services.appspot.com/o/relaxia-profiles%2Fblank-profile-picture-973460_960_720.webp?alt=media") @map("profile_picture")
+  role                  Role                  @default(STUDENT)
+  verificationStatus    VerificationStatus    @default(UNVERIFIED) @map("verification_status")
+  verificationCode      String?               @map("verification_code")
+  verificationExpires   DateTime?             @map("verification_expires")
+  passwordResetStatus   PasswordResetStatus   @default(IDLE) @map("password_reset_status")
+  passwordResetCode     String?               @map("password_reset_code")
+  passwordResetExpires  DateTime?             @map("password_reset_expires")
+  createdAt             DateTime              @default(now()) @map("created_at")
+  updatedAt             DateTime              @updatedAt @map("updated_at")
+
+  // Relations
+  student               Student?
+}
+
+model Student {
+  id         String   @id @default(uuid())
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     String   @unique
+
+  // Example student-specific fields
+  level      Level?
+  major      String?
+  score      Int?
+
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+
+enum Role {
+  ADMIN
+  STUDENT
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+enum VerificationStatus {
+    VERIFIED
+    PENDING
+    UNVERIFIED
+}
+
+enum PasswordResetStatus {
+    PENDING
+    IDLE
+}
+
+enum Level {
+  LEVEL_1
+  LEVEL_2
+  LEVEL_3
+}
