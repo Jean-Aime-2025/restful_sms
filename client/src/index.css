@@ -116,6 +116,9 @@
     font-family: "Urbanist", sans-serif;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-x-hidden;
+  }
+  button{
+    @apply cursor-pointer
   }
 }
