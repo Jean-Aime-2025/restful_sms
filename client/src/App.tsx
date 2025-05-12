@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import AdminDashboard from '@/pages/admin/AdminDashboard';
 import Students from '@/pages/admin/Students';
@@ -7,28 +7,33 @@ import { AdminLayout } from './components/layouts/AdminLayout';
 import StudentLayout from './components/layouts/StudentLayout';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
+import ProtectedRoute from './components/security/ProtectedRoute';
 
 function App() {
   return (
-    <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         {/* Admin Section */}
         <Route
           path="/admin"
           element={
-            <AdminLayout>
-              <AdminDashboard />
-            </AdminLayout>
+            <ProtectedRoute>
+              <AdminLayout>
+                <AdminDashboard />
+              </AdminLayout>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/admin/students"
           element={
-            <AdminLayout>
-              <Students />
-            </AdminLayout>
+            <ProtectedRoute>
+              <AdminLayout>
+                <Students />
+              </AdminLayout>
+            </ProtectedRoute>
           }
         />
 
@@ -36,14 +41,15 @@ function App() {
         <Route
           path="/student"
           element={
-            <StudentLayout>
-              <StudentDashboard />
-            </StudentLayout>
+            <ProtectedRoute>
+              <StudentLayout>
+                <StudentDashboard />
+              </StudentLayout>
+            </ProtectedRoute>
           }
         />
         {/* Add more student routes here as needed */}
       </Routes>
-    </BrowserRouter>
   );
 }
 

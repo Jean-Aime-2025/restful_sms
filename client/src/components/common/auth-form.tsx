@@ -3,21 +3,36 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { useLogin } from '@/hooks/use-auth';
+import { ClipLoader } from "react-spinners";
+import { useState } from 'react';
+import { Eye, EyeOff } from 'lucide-react'; 
 
 interface LoginFormProps extends React.ComponentProps<'div'> {
   type: 'login' | 'register';
 }
 
-export function LoginForm({ className, type = 'login', ...props }: LoginFormProps) {
+export function AuthForm({ className, type = 'login', ...props }: LoginFormProps) {
   const isRegister = type === 'register';
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
+
+
+  const loginMutation = useLogin();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
-    console.log(`${type.toUpperCase()} data:`, data);
-    // Submit logic here (e.g., API call)
+
+    if (type === 'login') {
+      loginMutation.mutate({
+        email: data.email as string,
+        password: data.password as string,
+      });
+    }
   };
+  const loading = loginMutation.isPending;
 
   return (
     <div className={cn('flex flex-col gap-6', className)} {...props}>
@@ -66,9 +81,23 @@ export function LoginForm({ className, type = 'login', ...props }: LoginFormProp
                 <Input id="email" name="email" type="email" placeholder="m@example.com" required />
               </div>
 
-              <div className="grid gap-2">
+             <div className="grid gap-2 relative">
                 <Label htmlFor="password">Password</Label>
-                <Input id="password" name="password" type="password" required />
+                <Input
+                  id="password"
+                  name="password"
+                  type={showPassword ? 'text' : 'password'}
+                  required
+                  className="pr-10"
+                />
+                <button
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                  className="absolute right-3 top-[32px] text-muted-foreground cursor-pointer"
+                  tabIndex={-1}
+                >
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
               </div>
 
               {!isRegister && (
@@ -82,8 +111,15 @@ export function LoginForm({ className, type = 'login', ...props }: LoginFormProp
                 </div>
               )}
 
-              <Button type="submit" className="w-full">
-                {isRegister ? 'Register' : 'Login'}
+              <Button type="submit" className={`w-full cursor-pointer ${loading ? "opacity-70" : ""}`} disabled={loading}>
+                {loading ? (
+                  <div className="flex items-center justify-center gap-x-2 w-full">
+                    <ClipLoader size={20} color="#fff" />
+                    <span>Please wait...</span>
+                  </div>
+                ) : (
+                  <span>{isRegister ? 'Register' : 'Login'}</span>
+                )}
               </Button>
 
               <div className="text-center text-sm">
